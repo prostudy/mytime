@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<script src="lib/angular.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags 
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">-->
+
+    <title>MyTime</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body role="document">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">My time</a>
+        </div>
+        <!-- <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main" ng-app="mytime" ng-controller="MyTimeCtrl" >
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>How do you distribute your time?</h1>
+        <p>Each week has 168 hours...</p>
+        
+      </div>
+      
+      <div class="ng-scope ng-binding">
+        	{{totalHoursWeek}}
+        	<br>Total de horas en la semana: {{total}}
+        	<br>Total de horas por dia:{{totalD}}
+    	</div>
+      <div class="page-header">
+        <h1>Categories</h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Sleep and rest ({{sleepCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{sleepCategory.percentage}}%;">
+				    {{sleepCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in sleepCategory.hoursObject"><a ng-click="performCal(sleepCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+          
+           <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Education and rest ({{educationCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{educationCategory.percentage}}%;">
+				    {{educationCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in educationCategory.hoursObject"><a ng-click="performCal(educationCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+          
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">Health({{healthCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{healthCategory.percentage}}%;">
+				    {{healthCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in healthCategory.hoursObject"><a ng-click="performCal(healthCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+          
+          
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-4">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Breakfast({{breakfastCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{breakfastCategory.percentage}}%;">
+				    {{breakfastCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in breakfastCategory.hoursObject"><a ng-click="performCal(breakfastCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+          
+          
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Work ({{workCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{workCategory.percentage}}%;">
+				    {{workCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in workCategory.hoursObject"><a ng-click="performCal(workCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+          
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Family ({{familyCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{familyCategory.percentage}}%;">
+				    {{familyCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in familyCategory.hoursObject"><a ng-click="performCal(familyCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+        
+        
+        <div class="col-sm-4">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">transport ({{transportCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{transportCategory.percentage}}%;">
+				    {{transportCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in transportCategory.hoursObject"><a ng-click="performCal(transportCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+          
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title">Mealtime ({{mealtimeCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{mealtimeCategory.percentage}}%;">
+				    {{mealtimeCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in mealtimeCategory.hoursObject"><a ng-click="performCal(mealtimeCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Entertainment ({{entertainmentCategory.hoursByWeek}}hrs. per week)</h3>
+            </div>
+            <div class="panel-body">
+              	<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{entertainmentCategory.percentage}}%;">
+				    {{entertainmentCategory.percentage}}%				
+				  </div>
+				</div>
+			   <nav>
+			  <ul class="pagination" >
+			  	<li class="{{x.active}}" ng-repeat="x in entertainmentCategory.hoursObject"><a ng-click="performCal(entertainmentCategory,x)">{{x.hour}}</a></li>
+			  </ul>
+			</nav>
+            </div>
+          </div>
+          
+        </div><!-- /.col-sm-4 -->
+      </div>
+
+		<!-- 16:9 aspect ratio -->
+		<div class="embed-responsive embed-responsive-16by9">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/wsjHDgNTjS0?list=PLKiY9WYR4InQ4M0VESzh65R459bXHJlCG" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div> <!-- /container -->
+
+
+ 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/mytime.js"></script>
+    <script src="js/MyTimeCtrl.js"></script>
+    
+    <script src="js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
+
+
