@@ -3,9 +3,12 @@ app.controller("MyTimeCtrl", function($scope) {
 	$scope.totalHoursWeek = 168;
 	$scope.totalHoursDay = 24;
 	
+	$scope.total = 168;
+	$scope.totalD = 24;
+	
+	
 	$scope.daysWeek = 7;
 	$scope.validHours = ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];
-	//TODO:Crear un objeto que tenga todos los datos por cada cajita, para poder controlarlos facilmente sin tantas variables.
 	
 	$scope.sleepCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}

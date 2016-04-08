@@ -29,7 +29,7 @@
     <![endif]-->
   </head>
 
-  <body role="document">
+  <body role="document" ng-app="mytime" ng-controller="MyTimeCtrl" >
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">My time</a>
+          <a class="navbar-brand" href="#">Semana: {{total}} /  Dia:{{totalD}}</a>
         </div>
         <!-- <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -65,19 +65,17 @@
       </div>
     </nav>
 
-    <div class="container theme-showcase" role="main" ng-app="mytime" ng-controller="MyTimeCtrl" >
+    <div class="container theme-showcase" role="main" >
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <h1>How do you distribute your time?</h1>
-        <p>Each week has 168 hours...</p>
+        <p>Each week has {{totalHoursWeek}} hours...</p>
         
       </div>
       
       <div class="ng-scope ng-binding">
-        	{{totalHoursWeek}}
-        	<br>Total de horas en la semana: {{total}}
-        	<br>Total de horas por dia:{{totalD}}
+        	
     	</div>
       <div class="page-header">
         <h1>Categories</h1>
@@ -201,7 +199,7 @@
         <div class="col-sm-4">
           <div class="panel panel-warning">
             <div class="panel-heading">
-              <h3 class="panel-title">transport ({{transportCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">Transport ({{transportCategory.hoursByWeek}}hrs. per week)</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
