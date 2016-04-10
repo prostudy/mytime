@@ -73,28 +73,34 @@
         <p>Each week has {{totalHoursWeek}} hours...</p>
         
       </div>
-      
-      <div class="ng-scope ng-binding">
-        	
-    	</div>
+     
       <div class="page-header">
-        <h1>Categories</h1>
+        <h1>Categories <button type="button" class="btn btn-lg btn-primary" ng-click="init()">Reset</button></h1>
+      </div>
+      <div class="alert alert-{{successOrDanger}} {{showAlert}}" role="alert" >
+             <div ng-bind-html="alertMessage"></div>
       </div>
       <div class="row">
         <div class="col-sm-4">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Sleep and rest ({{sleepCategory.hoursByWeek}}hrs. per week)</h3>
+				<h3 class="panel-title">
+				<select ng-model="selectedSleepDays" ng-init="selectedSleepDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(sleepCategory,selectedSleepDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
+            Description:
               	<div class="progress">
 				  <div class="progress-bar" role="progressbar" aria-valuenow="percentage" aria-valuemin="0" aria-valuemax="100" style="width: {{sleepCategory.percentage}}%;">
 				    {{sleepCategory.percentage}}%				
 				  </div>
 				</div>
+				Select the number of hours per day:
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in sleepCategory.hoursObject"><a ng-click="performCal(sleepCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in sleepCategory.hoursObject"><a  ng-click="performCal(sleepCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>
@@ -103,6 +109,10 @@
            <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">Education and rest ({{educationCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">
+				<select ng-model="selectedEducationDays" ng-init="selectedEducationDays = daysAWeek[4]"  ng-options="x.model for x in daysAWeek" ng-change="test(educationCategory,selectedEducationDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
@@ -112,7 +122,7 @@
 				</div>
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in educationCategory.hoursObject"><a ng-click="performCal(educationCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in educationCategory.hoursObject"><a ng-click="performCal(educationCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>
@@ -121,6 +131,10 @@
           <div class="panel panel-warning">
             <div class="panel-heading">
               <h3 class="panel-title">Health({{healthCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">
+				<select ng-model="selectedHealthDays" ng-init="selectedHealthDays = daysAWeek[3]"  ng-options="x.model for x in daysAWeek" ng-change="test(healthCategory,selectedHealthDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
@@ -130,7 +144,7 @@
 				</div>
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in healthCategory.hoursObject"><a ng-click="performCal(healthCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in healthCategory.hoursObject"><a ng-click="performCal(healthCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>
@@ -142,6 +156,10 @@
           <div class="panel panel-success">
             <div class="panel-heading">
               <h3 class="panel-title">Breakfast({{breakfastCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">
+				<select ng-model="selectedBreakfastDays" ng-init="selectedBreakfastDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(breakfastCategory,selectedBreakfastDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
@@ -151,7 +169,7 @@
 				</div>
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in breakfastCategory.hoursObject"><a ng-click="performCal(breakfastCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in breakfastCategory.hoursObject"><a ng-click="performCal(breakfastCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>
@@ -161,6 +179,10 @@
           <div class="panel panel-info">
             <div class="panel-heading">
               <h3 class="panel-title">Work ({{workCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">
+				<select ng-model="selectedWorkDays" ng-init="selectedWorkDays = daysAWeek[4]"  ng-options="x.model for x in daysAWeek" ng-change="test(workCategory,selectedWorkDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
@@ -170,7 +192,7 @@
 				</div>
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in workCategory.hoursObject"><a ng-click="performCal(workCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in workCategory.hoursObject"><a ng-click="performCal(workCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>
@@ -179,6 +201,10 @@
           <div class="panel panel-success">
             <div class="panel-heading">
               <h3 class="panel-title">Family ({{familyCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">
+				<select ng-model="selectedFamilyDays" ng-init="selectedFamilyDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(familyCategory,selectedFamilyDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
@@ -188,7 +214,7 @@
 				</div>
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in familyCategory.hoursObject"><a ng-click="performCal(familyCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in familyCategory.hoursObject"><a ng-click="performCal(familyCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>
@@ -200,6 +226,10 @@
           <div class="panel panel-warning">
             <div class="panel-heading">
               <h3 class="panel-title">Transport ({{transportCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">
+				<select ng-model="selectedTransportDays" ng-init="selectedTransportDays = daysAWeek[4]"  ng-options="x.model for x in daysAWeek" ng-change="test(transportCategory,selectedTransportDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
@@ -209,7 +239,7 @@
 				</div>
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in transportCategory.hoursObject"><a ng-click="performCal(transportCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in transportCategory.hoursObject"><a ng-click="performCal(transportCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>
@@ -218,6 +248,10 @@
           <div class="panel panel-danger">
             <div class="panel-heading">
               <h3 class="panel-title">Mealtime ({{mealtimeCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">
+				<select ng-model="selectedMealtimeDays" ng-init="selectedMealtimeDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(mealtimeCategory,selectedMealtimeDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
@@ -227,7 +261,7 @@
 				</div>
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in mealtimeCategory.hoursObject"><a ng-click="performCal(mealtimeCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in mealtimeCategory.hoursObject"><a ng-click="performCal(mealtimeCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>
@@ -235,6 +269,10 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Entertainment ({{entertainmentCategory.hoursByWeek}}hrs. per week)</h3>
+              <h3 class="panel-title">
+				<select ng-model="selectedEntertainmentDays" ng-init="selectedEntertainmentDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(entertainmentCategory,selectedEntertainmentDays.color)">
+				</select>	
+				</h3>
             </div>
             <div class="panel-body">
               	<div class="progress">
@@ -244,7 +282,7 @@
 				</div>
 			   <nav>
 			  <ul class="pagination" >
-			  	<li class="{{x.active}}" ng-repeat="x in entertainmentCategory.hoursObject"><a ng-click="performCal(entertainmentCategory,x)">{{x.hour}}</a></li>
+			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in entertainmentCategory.hoursObject"><a ng-click="performCal(entertainmentCategory,x)">{{x.hour}}</a></li>
 			  </ul>
 			</nav>
             </div>

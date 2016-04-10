@@ -16,3 +16,11 @@ body {
 .theme-showcase .navbar .container {
   width: auto;
 }
+
+.alert.showAlert {
+    display: block;
+}
+
+.alert.notShowAlert {
+    display: none;
+}
