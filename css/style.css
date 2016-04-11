@@ -24,3 +24,17 @@ body {
 .alert.notShowAlert {
     display: none;
 }
+
+select {
+    margin: 0px;
+    border: 1px solid #111;
+    background: transparent;
+    width: 65%;
+    padding: 2px;
+    /* font-size: 16px; */
+    border: 1px solid #ccc;
+    height: 24px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
