@@ -134,7 +134,7 @@ app.controller("MyTimeCtrl", function($scope,$sce) {
         	//$scope.showAlert = 'notShowAlert';
         	$scope.successOrDanger = 'success';
         	$scope.showAlert = 'showAlert';
-        	$scope.alertMessage = $sce.trustAsHtml('<strong>Well done!</strong> You still have '+$scope.totalD+' hours in a day and '+ $scope.total + ' hours in a week.');
+        	$scope.alertMessage = $sce.trustAsHtml('<strong>Well done!</strong> You still have <strong>'+$scope.totalD+' hours</strong> in a day and <strong>'+ $scope.total + ' hours</strong> in a week.');
         }
         
     };
