@@ -31,50 +31,60 @@ app.controller("MyTimeCtrl", function($scope,$sce) {
 	$scope.sleepCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
 	
 	$scope.educationCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':5
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
+	
 	
 	$scope.healthCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':4
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
 					
 	$scope.breakfastCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
 	
 	$scope.workCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':5
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
 	
 	
 	$scope.familyCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
 	
 	
 	$scope.transportCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
 					
 	
 	$scope.mealtimeCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
 	
 	$scope.entertainmentCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
 							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
 							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}] };
+							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
+							,{'hour':11, active:''},{'hour':12, active:''}]};
 	
 	};
 	
@@ -119,12 +129,12 @@ app.controller("MyTimeCtrl", function($scope,$sce) {
         }else if($scope.totalD == 0 || $scope.total == 0){
         	$scope.successOrDanger = 'info';
         	$scope.showAlert = 'showAlert';
-        	$scope.alertMessage = $sce.trustAsHtml('<strong>Heads up!</strong> Your day is completed.');
+        	$scope.alertMessage = $sce.trustAsHtml('<strong>Heads up!</strong> Your day is completed.<br>You have available <strong>'+ $scope.total + ' hours a week</strong> to create something new.');
         }else{
         	//$scope.showAlert = 'notShowAlert';
         	$scope.successOrDanger = 'success';
         	$scope.showAlert = 'showAlert';
-        	$scope.alertMessage = $sce.trustAsHtml('<strong>Well done!</strong> You still have '+$scope.totalD+' hours a day');
+        	$scope.alertMessage = $sce.trustAsHtml('<strong>Well done!</strong> You still have '+$scope.totalD+' hours in a day and '+ $scope.total + ' hours in a week.');
         }
         
     };
