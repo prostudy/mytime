@@ -8,6 +8,25 @@ app.controller("MyTimeCtrl", function($scope,$sce) {
 			                {model : "6 days a week", color : 6},
 			                {model : "7 days a week", color : 7},
 			            ];	
+	 
+	 $scope.hoursPerDay = [
+							 {'label':'0 hrs', 'hour':0, active:'active'},{'label':'30 min','hour':.5, active:''}
+							,{'label':'1 hr.','hour':1, active:''},{'label':'1:30 hrs','hour':1.5, active:''}
+							,{'label':'2 hrs.','hour':2, active:''},{'label':'2:30 hrs.','hour':2.5, active:''}
+							,{'label':'3 hrs.','hour':3, active:''},{'label':'3:30 hrs.','hour':3.5, active:''}
+							,{'label':'4 hrs.','hour':4, active:''},{'label':'4:30 hrs.','hour':4.5, active:''}
+							,{'label':'5 hrs.','hour':5, active:''},{'label':'5:30 hrs.','hour':5.5, active:''}
+							,{'label':'6 hrs.','hour':6, active:''},{'label':'6:30 hrs.','hour':6.5, active:''}
+							,{'label':'7 hrs.','hour':7, active:''},{'label':'7:30 hrs.','hour':7.5, active:''}
+							,{'label':'8 hrs.','hour':8, active:''},{'label':'8:30 hrs.','hour':8.5, active:''}
+							,{'label':'9 hrs.','hour':9, active:''},{'label':'9:30 hrs.','hour':9.5, active:''}
+							,{'label':'10 hrs.','hour':10, active:''},{'label':'10:30 hrs.','hour':10.5, active:''}
+							,{'label':'11 hrs.','hour':11, active:''},{'label':'11:30 hrs.','hour':11.5, active:''}
+							,{'label':'12 hrs.','hour':12, active:''},{'label':'12:30 hrs.','hour':12.5, active:''}
+						];
+	 
+	 
+	 
 	$scope.init = function(){
 		$scope.totalHours = 0;
 		$scope.totalHoursWeek = 168;
@@ -29,62 +48,35 @@ app.controller("MyTimeCtrl", function($scope,$sce) {
 
 	
 	$scope.sleepCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 	
 	$scope.educationCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':5
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 	
 	
 	$scope.healthCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':4
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 					
 	$scope.breakfastCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 	
 	$scope.workCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':5
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 	
 	
 	$scope.familyCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 	
 	
 	$scope.transportCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 					
 	
 	$scope.mealtimeCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 	
 	$scope.entertainmentCategory = {'hours':0, 'percentage':0,'hoursByWeek':0,'days':7
-							, 'hoursObject':[{'hour':0, active:'active'},{'hour':1, active:''},{'hour':2, active:''}
-							,{'hour':3, active:''},{'hour':4, active:''},{'hour':5, active:''},{'hour':6, active:''}
-							,{'hour':7, active:''},{'hour':8, active:''},{'hour':9, active:''},{'hour':10, active:''}
-							,{'hour':11, active:''},{'hour':12, active:''}]};
+							, 'hoursObject':$scope.hoursPerDay};
 	
 	};
 	

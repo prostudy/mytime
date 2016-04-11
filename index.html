@@ -131,17 +131,14 @@
               <h3 class="panel-title"><strong>Sleep and rest:</strong> is the time used for relax and sleep.</h3>
             </div>
             <div class="panel-body">
-				Select the number of hours per day: 
-			   <nav>
-			  <ul class="pagination" >
-			  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in sleepCategory.hoursObject"><a  ng-click="performCal(sleepCategory,x)">{{x.hour}}</a></li>
-			  </ul>
-			</nav>
-			How often do you do these activities?
-			<h3 class="panel-title">
+				<p>Select the number of hours per day:<br>
+					<select ng-model="selectedSleepHours" ng-init="selectedSleepHours = sleepCategory.hoursObject[0]"  ng-options="x.label for x in sleepCategory.hoursObject" ng-change="performCal(sleepCategory,selectedSleepHours)" >
+					</select> per day.
+			   </p>
+			<p>How often do you do these activities?
 				<select ng-model="selectedSleepDays" ng-init="selectedSleepDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(sleepCategory,selectedSleepDays.color)">
 				</select>	
-				</h3>
+			</p>
 				<hr>
 				You invest:
 				<strong>{{sleepCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{sleepCategory.hours}} hours</strong> per day.
@@ -159,17 +156,14 @@
               		<h3 class="panel-title"><strong>Education: </strong>Activities to learn something new or  develop abilities.</h3> 
             	</div>
             	<div class="panel-body">
-            		Select the number of hours per day:
-			   		<nav>
-				    	<ul class="pagination" >
-				  			<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in educationCategory.hoursObject"><a ng-click="performCal(educationCategory,x)">{{x.hour}}</a></li>
-				  		</ul>
-					</nav>
-					How often do you do these activities?
-					<h3 class="panel-title">
+            		<p>Select the number of hours per day:<br>
+						<select ng-model="selectedEducationHours" ng-init="selectedEducationHours = educationCategory.hoursObject[0]"  ng-options="x.label for x in educationCategory.hoursObject" ng-change="performCal(educationCategory,selectedEducationHours)" >
+						</select> per day.
+			   		</p>
+					<p>How often do you do these activities?
 						<select ng-model="selectedEducationDays" ng-init="selectedEducationDays = daysAWeek[4]"  ng-options="x.model for x in daysAWeek" ng-change="test(educationCategory,selectedEducationDays.color)">
 						</select>	
-					</h3>
+					</p>
 					<hr>
 					You invest:
 					<strong>{{educationCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{educationCategory.hours}} hours</strong> per day.
@@ -186,17 +180,14 @@
               		<h3 class="panel-title"><strong>Health:</strong> time to improve or maintain your body in good shape.</h3>
               	</div>
             	<div class="panel-body">
-            		Select the number of hours per day:
-            		<nav>
-					  <ul class="pagination" >
-					  	<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in healthCategory.hoursObject"><a ng-click="performCal(healthCategory,x)">{{x.hour}}</a></li>
-					  </ul>
-					</nav>
-					How often do you do these activities?
-					<h3 class="panel-title">
+            		<p>Select the number of hours per day:<br>
+						<select ng-model="selectedHealthHours" ng-init="selectedHealthHours = healthCategory.hoursObject[0]"  ng-options="x.label for x in healthCategory.hoursObject" ng-change="performCal(healthCategory,selectedHealthHours)" >
+						</select> per day.
+			   		</p>
+					<p>How often do you do these activities?
 						<select ng-model="selectedHealthDays" ng-init="selectedHealthDays = daysAWeek[3]"  ng-options="x.model for x in daysAWeek" ng-change="test(healthCategory,selectedHealthDays.color)">
 						</select>	
-					</h3>
+					</p>
 					<hr>
 					You invest:
 					<strong>{{healthCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{healthCategory.hours}} hours</strong> per day.
@@ -216,17 +207,14 @@
               	<h3 class="panel-title"><strong>Morning activities:</strong> take a shower, prepare the breakfast and get ready for your day.</h3>
              </div>
             <div class="panel-body">
-            	Select the number of hours per day:
-            	<nav>
-			  		<ul class="pagination" >
-			  			<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in breakfastCategory.hoursObject"><a ng-click="performCal(breakfastCategory,x)">{{x.hour}}</a></li>
-			  		</ul>
-				</nav>
-				How often do you do these activities?
-				<h3 class="panel-title">
-					<select ng-model="selectedBreakfastDays" ng-init="selectedBreakfastDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(breakfastCategory,selectedBreakfastDays.color)">
-					</select>	
-				</h3>
+            		<p>Select the number of hours per day:<br>
+						<select ng-model="selectedBreakfastHours" ng-init="selectedBreakfastHours = breakfastCategory.hoursObject[0]"  ng-options="x.label for x in breakfastCategory.hoursObject" ng-change="performCal(breakfastCategory,selectedBreakfastHours)" >
+						</select> per day.
+			   		</p>
+					<p>How often do you do these activities?
+						<select ng-model="selectedBreakfastDays" ng-init="selectedBreakfastDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(breakfastCategory,selectedBreakfastDays.color)">
+						</select>	
+					</p>
 				<hr>
 				You invest:
 				<strong>{{breakfastCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{breakfastCategory.hours}} hours</strong> per day.
@@ -244,17 +232,14 @@
               	<h3 class="panel-title"><strong>Work:</strong> time that you use to develop professionals activities. </h3>
              </div>
             <div class="panel-body">
-            	Select the number of hours per day:
-            	<nav>
-			  		<ul class="pagination" >
-			  			<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in workCategory.hoursObject"><a ng-click="performCal(workCategory,x)">{{x.hour}}</a></li>
-			  		</ul>
-				</nav>
-				How often do you do these activities?
-				<h3 class="panel-title">
-					<select ng-model="selectedWorkDays" ng-init="selectedWorkDays = daysAWeek[4]"  ng-options="x.model for x in daysAWeek" ng-change="test(workCategory,selectedWorkDays.color)">
-					</select>	
-				</h3>
+            		<p>Select the number of hours per day:<br>
+						<select ng-model="selectedWorkHours" ng-init="selectedWorkHours = workCategory.hoursObject[0]"  ng-options="x.label for x in workCategory.hoursObject" ng-change="performCal(workCategory,selectedWorkHours)" >
+						</select> per day.
+			   		</p>
+					<p>How often do you do these activities?
+						<select ng-model="selectedWorkDays" ng-init="selectedWorkDays = daysAWeek[4]"  ng-options="x.model for x in daysAWeek" ng-change="test(workCategory,selectedWorkDays.color)">
+						</select>	
+					</p>
 				<hr>
 				You invest:
 				<strong>{{workCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{workCategory.hours}} hours</strong> per day.
@@ -271,17 +256,14 @@
               	<h3 class="panel-title"><strong>Family:</strong> spend with your parents, siblings or any member of your family.</h3>
              </div>
             <div class="panel-body">
-            	Select the number of hours per day:
-            	<nav>
-			  		<ul class="pagination" >
-			  			<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in familyCategory.hoursObject"><a ng-click="performCal(familyCategory,x)">{{x.hour}}</a></li>
-			  		</ul>
-				</nav>
-				How often do you do these activities?
-				<h3 class="panel-title">
-					<select ng-model="selectedFamilyDays" ng-init="selectedFamilyDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(familyCategory,selectedFamilyDays.color)">
-					</select>	
-				</h3>
+            		<p>Select the number of hours per day:<br>
+						<select ng-model="selectedFamilyHours" ng-init="selectedFamilyHours = familyCategory.hoursObject[0]"  ng-options="x.label for x in familyCategory.hoursObject" ng-change="performCal(familyCategory,selectedFamilyHours)" >
+						</select> per day.
+			   		</p>
+					<p>How often do you do these activities?
+						<select ng-model="selectedFamilyDays" ng-init="selectedFamilyDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(familyCategory,selectedFamilyDays.color)">
+						</select>	
+					</p>
 				<hr>
 				You invest:
 				<strong>{{familyCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{familyCategory.hours}} hours</strong> per day.
@@ -301,17 +283,14 @@
               	<h3 class="panel-title"><strong>Transportation:</strong> Drive your car or take a bus from one location to another.</h3>
              </div>
             <div class="panel-body">
-            	Select the number of hours per day:
-            	<nav>
-			  		<ul class="pagination" >
-			  			<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in transportCategory.hoursObject"><a ng-click="performCal(transportCategory,x)">{{x.hour}}</a></li>
-			  		</ul>
-				</nav>
-				How often do you do these activities?
-				<h3 class="panel-title">
-					<select ng-model="selectedTransportDays" ng-init="selectedTransportDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(transportCategory,selectedTransportDays.color)">
-					</select>	
-				</h3>
+            		<p>Select the number of hours per day:<br>
+						<select ng-model="selectedTransportHours" ng-init="selectedTransportHours = transportCategory.hoursObject[0]"  ng-options="x.label for x in transportCategory.hoursObject" ng-change="performCal(transportCategory,selectedTransportHours)" >
+						</select> per day.
+			   		</p>
+					<p>How often do you do these activities?
+						<select ng-model="selectedTransportDays" ng-init="selectedTransportDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(transportCategory,selectedTransportDays.color)">
+						</select>	
+					</p>
 				<hr>
 				You invest:
 				<strong>{{transportCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{transportCategory.hours}} hours</strong> per day.
@@ -328,17 +307,14 @@
               	<h3 class="panel-title"><strong>Mealtime:</strong> at this time, your cook your food and you eat it.</h3>
              </div>
             <div class="panel-body">
-            	Select the number of hours per day:
-            	<nav>
-			  		<ul class="pagination" >
-			  			<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in mealtimeCategory.hoursObject"><a ng-click="performCal(mealtimeCategory,x)">{{x.hour}}</a></li>
-			  		</ul>
-				</nav>
-				How often do you do these activities?
-				<h3 class="panel-title">
-					<select ng-model="selectedMealtimeDays" ng-init="selectedMealtimeDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(mealtimeCategory,selectedMealtimeDays.color)">
-					</select>	
-				</h3>
+            		<p>Select the number of hours per day:<br>
+						<select ng-model="selectedMealtimeHours" ng-init="selectedMealtimeHours = mealtimeCategory.hoursObject[0]"  ng-options="x.label for x in mealtimeCategory.hoursObject" ng-change="performCal(mealtimeCategory,selectedMealtimeHours)" >
+						</select> per day.
+			   		</p>
+					<p>How often do you do these activities?
+						<select ng-model="selectedMealtimeDays" ng-init="selectedMealtimeDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(mealtimeCategory,selectedMealtimeDays.color)">
+						</select>	
+					</p>
 				<hr>
 				You invest:
 				<strong>{{mealtimeCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{mealtimeCategory.hours}} hours</strong> per day.
@@ -355,17 +331,14 @@
               	<h3 class="panel-title"><strong>Entertainment:</strong> Activities like go to the cinema or be with your friends.</h3>
              </div>
             <div class="panel-body">
-            	Select the number of hours per day:
-            	<nav>
-			  		<ul class="pagination" >
-			  			<li class="{{x.active}} {{classDisabled}}" ng-repeat="x in entertainmentCategory.hoursObject"><a ng-click="performCal(entertainmentCategory,x)">{{x.hour}}</a></li>
-			  		</ul>
-				</nav>
-				How often do you do these activities?
-				<h3 class="panel-title">
-					<select ng-model="selectedEntertainmentDays" ng-init="selectedEntertainmentDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(entertainmentCategory,selectedEntertainmentDays.color)">
-					</select>	
-				</h3>
+            		<p>Select the number of hours per day:<br>
+						<select ng-model="selectedEntertainmentHours" ng-init="selectedEntertainmentHours = entertainmentCategory.hoursObject[0]"  ng-options="x.label for x in entertainmentCategory.hoursObject" ng-change="performCal(entertainmentCategory,selectedEntertainmentHours)" >
+						</select> per day.
+			   		</p>
+					<p>How often do you do these activities?
+						<select ng-model="selectedEntertainmentDays" ng-init="selectedEntertainmentDays = daysAWeek[6]"  ng-options="x.model for x in daysAWeek" ng-change="test(entertainmentCategory,selectedEntertainmentDays.color)">
+						</select>	
+					</p>
 				<hr>
 				You invest:
 				<strong>{{entertainmentCategory.hoursByWeek}}hrs.</strong> per week and <strong>{{entertainmentCategory.hours}} hours</strong> per day.
@@ -383,9 +356,9 @@
              <div ng-bind-html="alertMessage"></div>
       </div>
 
-	<div class="page-header">
+	<!-- <div class="page-header">
         <center><button type="button" class="btn btn-lg btn-primary" ng-click="init()">Reset</button></center>
-      </div>
+      </div> -->
 
 	<div class="well">
         <p>Note: If your doing other activities, you try you include within the categories set.</p>
