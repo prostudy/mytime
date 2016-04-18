@@ -1,15 +1,16 @@
 app.controller("MyCostCtrl", function($scope,$sce) {
 	
 	$scope.init = function(){
-		$scope.costPerHour = 100.00;
+		$scope.costPerHour = 30.00;
+		$scope.title = 'Mobile app'
 		$scope.numTasks = 0;
 		$scope.tasks = [
-			                {'name':'Instalación  CMS', 'EO':2,'EMP':4,'EP':5,'pert':0,'desviEstandar':0,'varianza':0}
-			               ,{'name':'Personalizar CMS a las necesidades', 'EO':8,'EMP':12,'EP':17,'pert':0,'desviEstandar':0,'varianza':0}
-			               ,{'name':'Programación CMS para sitio web', 'EO':24,'EMP':32,'EP':40,'pert':0,'desviEstandar':0,'varianza':0}
-			               ,{'name':'Programación de Aplicación', 'EO':24,'EMP':32,'EP':40,'pert':0,'desviEstandar':0,'varianza':0}
-			               ,{'name':'Webservices para la aplicación', 'EO':19,'EMP':25,'EP':34,'pert':0,'desviEstandar':0,'varianza':0}
-			               ,{'name':'Preparar aplicación para publicar', 'EO':6,'EMP':8,'EP':10,'pert':0,'desviEstandar':0,'varianza':0}
+			               {'name':'Login screen', 'EO':8,'EMP':12,'EP':17,'pert':0,'desviEstandar':0,'varianza':0}
+			               ,{'name':'Personal profile screen', 'EO':24,'EMP':32,'EP':40,'pert':0,'desviEstandar':0,'varianza':0}
+			               ,{'name':'Rate and review screen', 'EO':24,'EMP':32,'EP':40,'pert':0,'desviEstandar':0,'varianza':0}
+			               ,{'name':'Connect with your website', 'EO':19,'EMP':25,'EP':34,'pert':0,'desviEstandar':0,'varianza':0}
+			               ,{'name':'Design', 'EO':6,'EMP':8,'EP':10,'pert':0,'desviEstandar':0,'varianza':0}
+			               ,{'name':'Create icon', 'EO':6,'EMP':8,'EP':10,'pert':0,'desviEstandar':0,'varianza':0}
 						];	 
 		$scope.updatePert();
 	};
@@ -27,9 +28,9 @@ app.controller("MyCostCtrl", function($scope,$sce) {
 			}
 		 
 		 $scope.raiz = Math.sqrt( $scope.varianzaTotal );
-		 $scope.p1 = $scope.pertTotal  + $scope.raiz;
-		 $scope.p2 = $scope.pertTotal  + $scope.raiz * 2;
-		 $scope.p3 = $scope.pertTotal  + $scope.raiz * 3;
+		 $scope.p1 = Math.round ($scope.pertTotal  + $scope.raiz,2);
+		 $scope.p2 = Math.round ($scope.pertTotal  + $scope.raiz * 2,2);
+		 $scope.p3 = Math.round ($scope.pertTotal  + $scope.raiz * 3,2);
 		 
 		 $scope.totalCost =  Math.round ( $scope.p3 * $scope.costPerHour,2 );
 	 };

@@ -30,21 +30,21 @@
 	</script>
 	<!-- share -->
 	<meta property="fb:app_id" content="1522988117993830"/> 
-	<meta property="og:url" content="http://mytime.getsir.mx/"/>
+	<meta property="og:url" content="http://mytime.getsir.mx/cost.html"/>
 	<meta property="og:type" content="article" />
-	<meta property="og:description" content="A tool that allows visually know how to distribute the 168 hours we have available in a week (and 24 hours each day) and thus visualize our priorities." />
-	<meta property="og:site_name" content="My Time" />
-	<meta property="og:title" content="My Time: How do you distribute your time?"/>
-	<meta property="og:image" content="http://mytime.getsir.mx/images/time.jpg" />
+	<meta property="og:description" content="A tool that allows know how to estimate time for tasks using Project Evaluation and Review Techniques." />
+	<meta property="og:site_name" content="My PERT" />
+	<meta property="og:title" content="My PERT: How to estimate the cost of your projects?"/>
+	<meta property="og:image" content="http://mytime.getsir.mx/images/money.jpg" />
 	
 	<!-- Twitter Summary Card -->
 	<meta name="twitter:card" content="summary_large_image"/>
 	<meta name="twitter:site" content="@getsir">
 	<meta name="twitter:creator" content="@getsir"/>
-	<meta name="twitter:url" content="http://mytime.getsir.mx/"/>
-	<meta name="twitter:title" content="My Time: How do you distribute your time?"/>
-	<meta name="twitter:description" content="A tool that allows visually know how to distribute the 168 hours we have available in a week (and 24 hours each day) and thus visualize our priorities."/>
-	<meta name="twitter:image" content="http://mytime.getsir.mx/images/time.jpg"/>
+	<meta name="twitter:url" content="http://mytime.getsir.mx/cost.html"/>
+	<meta name="twitter:title" content="My PERT: How to estimate the cost of your projects??"/>
+	<meta name="twitter:description" content="A tool that allows know how to estimate time for tasks using Project Evaluation and Review Techniques."/>
+	<meta name="twitter:image" content="http://mytime.getsir.mx/images/money.jpg"/>
 	
     <title>Cost-Any-Project</title>
 
@@ -89,19 +89,29 @@
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>How mucho to make any project?</h1>
+        <h1>How to estimate the cost of projects?</h1>
+        <center><img src="images/time2.jpg" width="20%"></center>
         <p>Easily calculate the cost of any project using this handy tool.</p>
-         <p>Only enter activities you have to do and the number of estimated hours</p>
-        
+        <p>Only enter activities you have to do and the number of estimated hours</p>
       </div>
      
       <div class="page-header">
+         <p><strong>Optimistic Time:</strong>This is the fastest time an activity can be completed. For this, the assumption is made that all the necessary resources are available and all predecessor activities are completed as planned.</p>
+         <p><strong>Most Likely Time:</strong>Most of the times, project managers are asked only to submit one estimate. In that case, this is the estimate that goes to the upper management.</p>
+         <p><strong>Pessimistic Time:</strong>This is the maximum time required to complete an activity. In this case, it is assumed that many things go wrong related to the activity. A lot of rework and resource unavailability are assumed when this estimation is derived.</p>
+        
         <h2>Enter your project information:</h2>
+        <div class="input-group">
+        	<p>Project's name:
+          		<input type="text"  placeholder="Project's name..." aria-describedby="basic-addon1"  ng-model='title'>
+          	</p>
+      		<p>Cost per hour $:
+  			<input type="number" ng-maxlength="5" size="5" placeholder="Cost per hour..." aria-describedby="basic-addon1" ng-change="updatePert()" ng-model='costPerHour'>
+			dollars.</p>
+		</div>
       </div>
       
-      <div class="input-group">
-  			<input type="text" class="form-control" placeholder="Costo por hora" aria-describedby="basic-addon1" ng-change="updatePert()" ng-model='costPerHour'>
-		</div>
+      
       
       
       <div class="row">
@@ -111,38 +121,43 @@
               <tr>
                 <th>#</th>
                 <th>Activitie name</th>
-                <th>Tiempo optimista<span data-toggle="tooltip" title="Hooray!"> ( ? )</span></th>
-                <th>Tiempo más probable <span data-toggle="tooltip" title="Hooray!"> ( ? )</span></th>
-                <th>Tiempo pesimista <span data-toggle="tooltip" title="Hooray!"> ( ? )</span></th>
-                <!-- <th>por hora({{pertTotal}} | {{raiz}} )</th> -->
+                <th>Optimistic Time</th>
+                <th>Most Likely Time</th>
+                <th>Pessimistic Time</th>
+                <!--  <th>por hora({{pertTotal}} | {{raiz}} )</th>--> 
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="task in tasks">
                  <td>{{ $index+1 }}</td>
                 <td><div class="input-group"><input type="text" class="form-control" placeholder="Nombre de la actividad" aria-describedby="basic-addon1" value='{{ task.name }}'></div></td>
-                <td><div class="input-group"><input type="number" ng-maxlength="5" class="form-control" aria-describedby="basic-addon1" ng-change="updatePert(task)" ng-model='task.EO'></div></td>
-                <td><div class="input-group"><input type="number" class="form-control" aria-describedby="basic-addon1" ng-change="updatePert(task)" ng-model='task.EMP'></div></td>
-                <td><div class="input-group"><input type="number" class="form-control" aria-describedby="basic-addon1" ng-change="updatePert(task)" ng-model='task.EP'></div></td>
+                <td><div class="input-group"><input type="number" placeholder="Number hours..."  ng-maxlength="5" class="form-control" aria-describedby="basic-addon1" ng-change="updatePert(task)" ng-model='task.EO'>hours.</div></td>
+                <td><div class="input-group"><input type="number" placeholder="Number hours..."  class="form-control" aria-describedby="basic-addon1" ng-change="updatePert(task)" ng-model='task.EMP'>hours.</div></td>
+                <td><div class="input-group"><input type="number" placeholder="Number hours..."  class="form-control" aria-describedby="basic-addon1" ng-change="updatePert(task)" ng-model='task.EP'>hours.</div></td>
                 <td><button type="button" class="btn btn-xs btn-danger" ng-click="removeTask(task)">Delete</button></td>
-                <!-- <td>{{task.pert}}| {{task.desviEstandar}} | {{task.varianza}} </td> -->
+                <!--  <td>{{task.pert}}| {{task.desviEstandar}} | {{task.varianza}} </td> --> 
               </tr>
             </tbody>
           </table>
-          <button type="button" class="btn btn-lg btn-default" ng-click="addTask()">Agregar actividad</button>
+          <button type="button" class="btn btn-lg btn-default" ng-click="addTask()">Add activity</button>
         </div>
       </div>
       
       <div class="page-header">
-        <h2>Tu proyecto debe costar: $ {{ totalCost }}</h2>
+        <h2>Your project ({{title}}) could be about cost: <strong>${{ totalCost }}</strong> with <strong>{{p3}} Hours</strong>.</h2>
       </div>
       
-      <div class="row">
+      
+       <div class="page-header">
+        <h2>Details</h2>
+      </div>
+      
+        <div class="row">
         <div class="col-md-12">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>Probabilidad</th>
+                <th>Probability of  duration of these activities:</th>
                 <th>68%</th>
                 <th>95%</th>
                 <th>97%</th>
@@ -150,19 +165,18 @@
             </thead>
             <tbody>
               <tr>
-                <td>Estimación en Horas</td>
-                <td>{{p1}}</td>
-                <td>{{p2}}</td>
-                <td>{{p3}}</td>
+                <td>Hours</td>
+                <td>{{p1}} Hours</td>
+                <td>{{p2}} Hours</td>
+                <td><strong>{{p3}} Hours</strong></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+
       
-       <div class="page-header">
-        <h2>Summary of the estimate</h2>
-      </div>
+    
       
 	We recommend you <a href="http://getsir.mx/go/mytimemedium" target="_blanl">http://getsir.mx/go/mytimemedium</a>
 	</div> <!-- /container -->
